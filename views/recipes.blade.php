@@ -161,7 +161,7 @@
 						<tr id="recipe-row-{{ $recipe->id }}"
 							data-recipe-id="{{ $recipe->id }}">
 							<td class="fit-content border-right">
-								<a class="btn btn-info btn-sm hide-when-embedded hide-on-fullscreen-card"
+								<a class="btn btn-info btn-sm hide-when-embedded hide-on-fullscreen-card recipe-edit-button"
 									href="{{ $U('/recipe/') }}{{ $recipe->id }}"
 									data-toggle="tooltip"
 									title="{{ $__t('Edit this item') }}">
@@ -280,7 +280,7 @@
 										title="{{ $__t('Delete this item') }}">
 										<i class="fa-solid fa-trash"></i>
 									</a>
-									<a class="btn btn-outline-info btn-xs hide-when-embedded hide-on-fullscreen-card"
+									<a class="btn btn-outline-info btn-xs hide-when-embedded hide-on-fullscreen-card recipe-edit-button"
 										href="{{ $U('/recipe/') }}{{ $recipe->id }}"
 										data-toggle="tooltip"
 										title="{{ $__t('Edit this item') }}">
@@ -341,7 +341,7 @@
 										data-recipe-name="{{ $recipe->name }}">
 										<i class="fa-solid fa-utensils"></i>
 									</a>
-									<a class="btn @if(!GROCY_FEATURE_FLAG_STOCK) d-none @endif recipe-shopping-list @if(FindObjectInArrayByPropertyValue($recipesResolved, 'recipe_id', $recipe->id)->need_fulfilled_with_shopping_list == 1) disabled @endif"
+									<a class="btn @if(!GROCY_FEATURE_FLAG_SHOPPINGLIST) d-none @endif recipe-shopping-list @if(FindObjectInArrayByPropertyValue($recipesResolved, 'recipe_id', $recipe->id)->need_fulfilled_with_shopping_list == 1) disabled @endif"
 										href="#"
 										data-toggle="tooltip"
 										title="{{ $__t('Put missing products on shopping list') }}"

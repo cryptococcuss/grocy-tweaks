@@ -170,6 +170,7 @@ $('#product_id_text_input').on('blur', function(e)
 		{
 			possibleOptionElement = $("#product_id option[value=\"" + gc[2] + "\"]").first();
 			$("#product_id").data("grocycode", true);
+			$('#product_id').attr("barcode", input);
 		}
 	}
 	else // Normal product barcode handling
@@ -249,8 +250,8 @@ $('#product_id_text_input').on('blur', function(e)
 						Grocy.Components.ProductPicker.PopupOpen = false;
 						window.location.href = U('/product/new?flow=InplaceNewProductWithBarcode&barcode=' + encodeURIComponent(input) + '&returnto=' + encodeURIComponent(Grocy.CurrentUrlRelative + "?flow=InplaceAddBarcodeToExistingProduct&barcode=" + input + "&" + embedded) + "&" + embedded);
 					}
-				}
-				/*barcodepluginlookup: {
+				},
+				barcodepluginlookup: {
 					label: '<strong>E</strong> ' + __t('External barcode lookup (via plugin)'),
 					className: 'btn-dark add-new-product-plugin-dialog-button responsive-button ' + addProductWorkflowsAdditionalCssClasses,
 					callback: function()
@@ -275,7 +276,7 @@ $('#product_id_text_input').on('blur', function(e)
 							}
 						);
 					}
-				}*/
+				}
 			};
 
 			if (!Grocy.FeatureFlags.GROCY_FEATURE_FLAG_DISABLE_BROWSER_BARCODE_CAMERA_SCANNING)
@@ -298,7 +299,7 @@ $('#product_id_text_input').on('blur', function(e)
 			// otherwise an error validation message that the product is not in stock
 			var existsAsProduct = false;
 			var existsAsBarcode = false;
-			Grocy.Api.Get('objects/product_barcodes?query[]=barcode=' + input,
+			Grocy.Api.Get('objects/product_barcodes_view?query[]=barcode=' + input,
 				function(barcodeResult)
 				{
 					if (barcodeResult.length > 0)

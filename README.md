@@ -1,7 +1,10 @@
+-----
+
 <div align="center">
-<img alt="Logo" height="60" src="https://raw.githubusercontent.com/grocy/grocy/master/public/img/logo.svg?sanitize=true" />
-<h3>ERP beyond your fridge</h3>
-<h4>Grocy is a web-based self-hosted groceries & household management solution for your home<br>Created by <a href="https://github.com/berrnd">@berrnd</a></h4>
+<img alt="Logo" height="50" src="https://raw.githubusercontent.com/grocy/grocy/master/public/img/logo.svg?sanitize=true" />
+<h2>ERP beyond your fridge</h2>
+<h3>Grocy is a web-based self-hosted groceries & household management solution for your home</h3>
+<em><h4>This is a hobby project by <a href="https://berrnd.de">Bernd Bestel</a></h4></em>
 </div>
 
 -----
@@ -13,7 +16,7 @@
 
 ## Features
 
-See the website &rarr; <https://grocy.info>
+See the website. &rarr; <https://grocy.info>
 
 ## Questions / Help / Bug Reports / Feature Requests
 
@@ -81,13 +84,15 @@ _RTL languages are unfortunately not yet supported._
 
 ## Motivation
 
-A household needs to be managed. I did this so far (almost 10 years) with my first self written software (a C# Windows forms application) and with a bunch of Excel sheets. The software was a pain to use at the end and Excel is Excel. So I searched for and tried different things for a (very) long time, nothing 100 % fitted, so this is my aim for a "complete household management"-thing. ERP your fridge!
+A household needs to be managed. Before Grocy I did this (for almost 10 years) using my first self written software (a C# Windows forms application) and with a bunch of Excel sheets. The software was a pain to use at the end and Excel is Excel. So I searched for and tried different things for a (very) long time, nothing 100 % fitted, so this is my aim for a "complete household management"-thing. ERP your fridge!
 
 ## Things worth to know
 
 ### REST API
 
 See the integrated Swagger UI instance on [/api](https://demo.grocy.info/api).
+
+The web frontend uses exactly this API for pretty much everything. So everything you can do there is also possible via the API.
 
 ### Barcode readers & camera scanning
 
@@ -102,11 +107,11 @@ _My personal recommendation: Use a USB barcode laser scanner. They are cheap and
 For (productivity) reasons all date (and time) input (and display) fields use the ISO-8601 format regardless of localization.
 The following shorthands are available:
 - `MMDD` gets expanded to the given day on the current year, if > today, or to the given day next year, if < today, in proper notation
-  - Example: `0517` will be converted to `2023-05-17`
+  - Example: `0517` will be converted to `2024-05-17`
 - `YYYYMMDD` gets expanded to the proper ISO-8601 notation
-  - Example: `20230417` will be converted to `2023-04-17`
+  - Example: `20240417` will be converted to `2024-04-17`
 - `YYYYMMe` or `YYYYMM+` gets expanded to the end of the given month in the given year in proper notation
-  - Example: `202307e` will be converted to `2023-07-31`
+  - Example: `202407e` will be converted to `2024-07-31`
 - `[+/-]n[d/m/y]` gets expanded to a date relative to today, while adding (**+**) or subtracting (**-**) the **n**umber of **d**ays/**m**onths/**y**ears, in proper notation
   - Example: `+1m` will be converted to the same day next month
 - `x` gets expanded to `2999-12-31` (which is an alias for "never overdue")
@@ -124,7 +129,7 @@ Example: Button "**P** Add as new product" can be "pressed" by using the `P` key
 
 Products can be directly added to the database via looking them up against external services by a barcode.
 
-This is currently only possible through the REST API.
+This can be done in-place using the product picker workflow "External barcode lookup (via plugin)" (the workflow dialog is displayed when entering something unknown in any product input field).
 
 There is no plugin included for any service, see the reference implementation in `data/plugins/DemoBarcodeLookupPlugin.php`.
 
@@ -132,7 +137,7 @@ There is no plugin included for any service, see the reference implementation in
 
 Database schema migration is automatically done when visiting the root (`/`) route (click on the logo in the left upper edge).
 
-_Please note: Database migrations are supposed to work between releases, not between every commit. If you want to run the current `master` branch (which is the development version), you need to handle that (and maybe more) yourself._
+_Please note: Database migrations are supposed to work between releases, not between every commit. If you want to run the current `master` branch (which is the development version), you need to handle that (and more) yourself._
 
 ### Disable certain features
 
@@ -159,7 +164,7 @@ Any help is welcome, feel free to contribute anything which comes to your mind o
 
 ## Roadmap
 
-There is none, this is a hobby project. The progress of a specific bug/enhancement is always tracked in the corresponding issue, at least by commit comment references.
+There is none. The progress of a specific bug/enhancement is always tracked in the corresponding issue, at least by commit comment references.
 
 [Milestones](https://github.com/grocy/grocy/milestones) are used to indicate in which version the corresponding request was done (`vNEXT` means it's currently planned to do that for the next release).
 
